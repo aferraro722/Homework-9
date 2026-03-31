@@ -75,6 +75,26 @@ knitr::kable(random_sample)
 
 
 
+#### Making one Flattened String
+```{r}
+percent_strings = random_sample %>%
+  pull(percent_year)
+
+flattened_string = str_flatten(percent_strings, ", ", last = ", and ")
+
+str_view(flattened_string)
+```
+
+^[Question 5 Complete]
+
+
+
+
+
+
+
+
+
 
 
 
