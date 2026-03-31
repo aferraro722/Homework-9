@@ -60,6 +60,21 @@ knitr::kable(str_babynames %>%
 
 
 
+#### Selecting 5 Random Rows From the Data
+```{r}
+set.seed(727)
+
+random_sample <- str_babynames %>%
+  slice_sample(n = 5) %>%
+  arrange(year)
+
+knitr::kable(random_sample)
+```
+
+^[Question 4 Complete]
+
+
+
 
 
 
