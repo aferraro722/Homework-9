@@ -1,0 +1,67 @@
+---
+title: "Homework 9"
+author: "Anthony Ferraro"
+output: 
+  html_document:
+    code_folding: hide
+    linkcolor: blue
+    urlcolor: blue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA, fig.align = "center", out.width = "50%", warning = FALSE, message = FALSE)
+
+library(tidyverse)
+library(knitr)
+
+theme_set(theme_minimal())
+
+library(babynames)
+data(babynames)
+```
+
+
+#### Converting Proportions into Percentages
+```{r}
+knitr::kable(babynames %>%
+  mutate(prop_percent = (prop * 100)) %>%
+  head(n = 6))
+```
+
+^[Question 1 Complete]
+
+
+#### Adding a "Percent in Year" Column
+```{r}
+perc_babynames = babynames %>%
+  mutate(prop_percent = (prop * 100))
+
+knitr::kable(perc_babynames %>%
+  mutate(prop_percent = round(prop * 100, 2),
+         percent_year = str_glue("{prop_percent} % in {year}")) %>%
+  head(6))
+```
+
+^[Question 2 Complete]
+
+
+#### Filtering the Data to One Name and Sex
+```{r}
+str_babynames = perc_babynames %>%
+  mutate(prop_percent = round(prop * 100, 2),
+         percent_year = str_glue("{prop_percent} % in {year}"))
+
+knitr::kable(str_babynames %>%
+  filter(name == "Aj" & sex == "M") %>%
+  head(n = 6))
+```
+
+^[Question 3 Complete]
+
+
+
+
+
+
+
+
