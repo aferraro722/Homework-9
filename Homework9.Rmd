@@ -52,7 +52,7 @@ str_babynames = perc_babynames %>%
          percent_year = str_glue("{prop_percent} % in {year}"))
 
 knitr::kable(str_babynames %>%
-  filter(name == "Aj" & sex == "M") %>%
+  filter(name == "Mary" & sex == "F") %>%
   head(n = 6))
 ```
 
@@ -62,9 +62,12 @@ knitr::kable(str_babynames %>%
 
 #### Selecting 5 Random Rows From the Data
 ```{r}
-set.seed(727)
+filtered_babynames = str_babynames %>%
+  filter(name == "Mary" & sex == "F")
 
-random_sample <- str_babynames %>%
+set.seed(720)
+
+random_sample <- filtered_babynames %>%
   slice_sample(n = 5) %>%
   arrange(year)
 
@@ -86,6 +89,19 @@ str_view(flattened_string)
 ```
 
 ^[Question 5 Complete]
+
+
+#### Making a Final String
+```{r results = "asis"}
+final_string = str_glue("Out of all female names, the name Mary represented {flattened_string}")
+
+cat(final_string)
+```
+
+^[Question 6 Complete]
+
+
+
 
 
 
